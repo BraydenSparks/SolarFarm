@@ -10,6 +10,13 @@ namespace SolarFarm.BLL
 {
     public class PanelService : IPanelService
     {
+        private IPanelFarm _farm;
+
+        public PanelService(IPanelFarm farm)
+        {
+            _farm = farm;
+        }
+
         public Result<SolarPanel> Add(SolarPanel panel)
         {
             throw new NotImplementedException();
