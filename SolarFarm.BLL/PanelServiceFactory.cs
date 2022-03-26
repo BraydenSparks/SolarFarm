@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SolarFarm.BLL
 {
-   public static class PanelServiceFactory
+    public static class PanelServiceFactory
     {
         public static IPanelService GetPanelService()
         {

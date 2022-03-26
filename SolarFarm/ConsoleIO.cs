@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SolarFarm.Core.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,9 +48,9 @@ namespace SolarFarm.UI
         public int GetInt(string message)
         {
             int? result = GetIntOrNull(message);
-            while(result == null)
+            while (result == null)
             {
-                DisplayError("Error: input can not be null");
+                DisplayError("Error: invalid input!");
                 result = GetIntOrNull(message);
             }
             return (int)result;
@@ -59,7 +60,7 @@ namespace SolarFarm.UI
             decimal? result = GetDecimalOrNull(message);
             while (result == null)
             {
-                DisplayError("Error: input can not be null");
+                DisplayError("Error: invalid input!");
                 result = GetIntOrNull(message);
             }
             return (decimal)result;
@@ -83,7 +84,7 @@ namespace SolarFarm.UI
             while (!isYesNo)
             {
                 result = GetString(message);
-                if(result == "y" || result == "n")
+                if (result == "y" || result == "n")
                 {
                     isYesNo = true;
                 }
@@ -93,6 +94,49 @@ namespace SolarFarm.UI
                 }
             }
             return result;
+        }
+        public bool GetBool(string message)
+        {
+            bool result = false;
+            bool isBool = false;
+            while (!isBool)
+            {
+                Prompt(message);
+                if (!bool.TryParse(Console.ReadLine(), out result))
+                {
+                    DisplayError("Error: Must be true or false.");
+                }
+                else
+                {
+                    isBool = true;
+                }
+            }
+            return result;
+        }
+
+        public Materials GetMaterials(string message)
+        {
+            while (true)
+            {
+                string code = GetString(message);
+                switch (code)
+                {
+                    case "multi-si":
+                        return Materials.MULTICRYSTALLINESILICON;
+                    case "mono-si":
+                        return Materials.MONOCRYSTALLINESILICON;
+                    case "a-si":
+                        return Materials.AMORPHOUSSILICON;
+                    case "cdte":
+                        return Materials.CADMIUMTELLURIDE;
+                    case "cigs":
+                        return Materials.COPPERINDIUMGALLIUMSELENIDE;
+                    default:
+                        DisplayError("Error: Invalid material code.\n" +
+                            "Multi-Si, Mono-Si, A-Si, CdTe, or CIGS.");
+                        break;
+                }
+            }
         }
 
         // Console output methods -----

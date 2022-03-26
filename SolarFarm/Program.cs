@@ -1,4 +1,7 @@
-﻿using System;
+﻿using SolarFarm.BLL;
+using SolarFarm.Core.Interfaces;
+using SolarFarm.UI;
+using System;
 
 namespace SolarFarm
 {
@@ -6,7 +9,10 @@ namespace SolarFarm
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            ConsoleIO io = new ConsoleIO();
+            IPanelService service = PanelServiceFactory.GetPanelService();
+            Controller controller = new Controller(io,service);
+            controller.Run();
         }
     }
 }

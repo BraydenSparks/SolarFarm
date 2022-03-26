@@ -19,22 +19,22 @@ namespace SolarFarm.BLL
 
         public Result<SolarPanel> Add(SolarPanel panel)
         {
-            throw new NotImplementedException();
+            return _farm.Add();
         }
 
         public Result<List<SolarPanel>> LoadSection(string sectionName)
         {
-            throw new NotImplementedException();
+            return _farm.GetAll();
         }
 
-        public Result<SolarPanel> Remove(string seectionName, int row, int column)
+        public Result<SolarPanel> Remove(string sectionName, int row, int column)
         {
-            throw new NotImplementedException();
+            return _farm.Remove();
         }
 
-        public Result<SolarPanel> Update(string seectionName, int row, int column)
+        public Result<SolarPanel> Update(string sectionName, int row, int column)
         {
-            throw new NotImplementedException();
+            return _farm.Edit();
         }
     }
 }

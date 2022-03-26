@@ -1,13 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <TargetFramework>net5.0</TargetFramework>
+    <ApplicationIcon />
+    <StartupObject />
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SolarFarm.Core\SolarFarm.Core.csproj" />
     <ProjectReference Include="..\SolarFarm.NUnit\SolarFarm.NUnit.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\SolarFarm.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
